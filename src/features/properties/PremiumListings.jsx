@@ -1,21 +1,56 @@
-import React, { useState, useEffect } from 'react';
-import { MapPin, Home, Building, Bath, Star, Phone, Clock, Shield, Users, Heart, Filter, ChevronRight, ChevronLeft, Maximize2, Share2, Check, ChevronDown, Search, ArrowUpDown, Eye, MessageSquare, SquareParking, Dumbbell, Waves, Car, TreePine, ChevronUp, Menu, X, ArrowDown, Crown, Award, Sparkles, Zap } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import {
+  MapPin,
+  Home,
+  Building,
+  Bath,
+  Star,
+  Phone,
+  Clock,
+  Shield,
+  Users,
+  Heart,
+  Filter,
+  ChevronRight,
+  ChevronLeft,
+  Maximize2,
+  Share2,
+  Check,
+  ChevronDown,
+  Search,
+  ArrowUpDown,
+  Eye,
+  MessageSquare,
+  SquareParking,
+  Dumbbell,
+  Waves,
+  Car,
+  TreePine,
+  ChevronUp,
+  Menu,
+  X,
+  ArrowDown,
+  Crown,
+  Award,
+  Sparkles,
+  Zap,
+} from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 
 function PremiumListings() {
   const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState({});
   const [likedProperties, setLikedProperties] = useState({});
-  const [activeFilter, setActiveFilter] = useState('all');
-  const [sortBy, setSortBy] = useState('relevance');
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [sortBy, setSortBy] = useState("relevance");
   const [showFilters, setShowFilters] = useState(false);
 
   // Toggle like status
   const toggleLike = (id, e) => {
     e.stopPropagation();
-    setLikedProperties(prev => ({
+    setLikedProperties((prev) => ({
       ...prev,
-      [id]: !prev[id]
+      [id]: !prev[id],
     }));
   };
 
@@ -27,18 +62,19 @@ function PremiumListings() {
   // Navigation for image carousel
   const navigateImage = (propertyId, direction, e) => {
     e.stopPropagation();
-    setCurrentImageIndex(prev => {
+    setCurrentImageIndex((prev) => {
       const current = prev[propertyId] || 0;
-      const property = premiumProperties.find(p => p.id === propertyId);
+      const property = premiumProperties.find((p) => p.id === propertyId);
       if (!property || !property.images) return prev;
 
-      const newIndex = direction === 'next'
-        ? (current + 1) % property.images.length
-        : (current - 1 + property.images.length) % property.images.length;
+      const newIndex =
+        direction === "next"
+          ? (current + 1) % property.images.length
+          : (current - 1 + property.images.length) % property.images.length;
 
       return {
         ...prev,
-        [propertyId]: newIndex
+        [propertyId]: newIndex,
       };
     });
   };
@@ -63,7 +99,7 @@ function PremiumListings() {
       images: [
         "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
         "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
-        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
       ],
       updated: "3d ago",
       agent: "Puneri House Elite",
@@ -71,7 +107,12 @@ function PremiumListings() {
       views: 189,
       isRecommended: true,
       isTrending: true,
-      premiumFeatures: ["Professional Photography", "Virtual Tour", "Priority Support", "Featured Listing"]
+      premiumFeatures: [
+        "Professional Photography",
+        "Virtual Tour",
+        "Priority Support",
+        "Featured Listing",
+      ],
     },
     {
       id: 2,
@@ -88,11 +129,17 @@ function PremiumListings() {
       bathrooms: 5,
       furnished: "Fully furnished",
       furnishingsStatus: "Furnishing status",
-      amenities: ["Private Pool", "Garden", "3 Car Parking", "Home Theater", "Wine Cellar"],
+      amenities: [
+        "Private Pool",
+        "Garden",
+        "3 Car Parking",
+        "Home Theater",
+        "Wine Cellar",
+      ],
       images: [
         "https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
         "https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
-        "https://images.unsplash.com/photo-1600585154340-963ed7476c06?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+        "https://images.unsplash.com/photo-1600585154340-963ed7476c06?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
       ],
       updated: "1d ago",
       agent: "Puneri House Platinum",
@@ -100,7 +147,12 @@ function PremiumListings() {
       views: 89,
       isRecommended: false,
       isTrending: true,
-      premiumFeatures: ["3D Virtual Tour", "Professional Video", "Premium Analytics", "Dedicated Support"]
+      premiumFeatures: [
+        "3D Virtual Tour",
+        "Professional Video",
+        "Premium Analytics",
+        "Dedicated Support",
+      ],
     },
     {
       id: 3,
@@ -117,11 +169,17 @@ function PremiumListings() {
       bathrooms: 3,
       furnished: "Fully furnished",
       furnishingsStatus: "Furnishing status",
-      amenities: ["City View", "Private Terrace", "Jacuzzi", "Smart Home", "Private Lift"],
+      amenities: [
+        "City View",
+        "Private Terrace",
+        "Jacuzzi",
+        "Smart Home",
+        "Private Lift",
+      ],
       images: [
         "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
         "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
-        "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+        "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
       ],
       updated: "4h ago",
       agent: "Puneri House Elite",
@@ -129,7 +187,12 @@ function PremiumListings() {
       views: 42,
       isRecommended: true,
       isTrending: true,
-      premiumFeatures: ["Drone Photography", "Virtual Reality Tour", "Premium Placement", "Priority Showings"]
+      premiumFeatures: [
+        "Drone Photography",
+        "Virtual Reality Tour",
+        "Premium Placement",
+        "Priority Showings",
+      ],
     },
     {
       id: 4,
@@ -150,7 +213,7 @@ function PremiumListings() {
       images: [
         "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
         "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
-        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
       ],
       updated: "5d ago",
       agent: "Puneri House Premium",
@@ -158,7 +221,12 @@ function PremiumListings() {
       views: 156,
       isRecommended: true,
       isTrending: false,
-      premiumFeatures: ["Professional Staging", "High-Quality Photos", "Featured in Newsletter", "Social Media Promotion"]
+      premiumFeatures: [
+        "Professional Staging",
+        "High-Quality Photos",
+        "Featured in Newsletter",
+        "Social Media Promotion",
+      ],
     },
     {
       id: 5,
@@ -175,11 +243,17 @@ function PremiumListings() {
       bathrooms: 4,
       furnished: "Fully furnished",
       furnishingsStatus: "Furnishing status",
-      amenities: ["Private Garden", "Home Office", "Wine Cellar", "Sauna", "Smart Security"],
+      amenities: [
+        "Private Garden",
+        "Home Office",
+        "Wine Cellar",
+        "Sauna",
+        "Smart Security",
+      ],
       images: [
         "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
         "https://images.unsplash.com/photo-1560448205-97abe7378152?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
-        "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+        "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
       ],
       updated: "1w ago",
       agent: "Puneri House Platinum",
@@ -187,7 +261,12 @@ function PremiumListings() {
       views: 245,
       isRecommended: true,
       isTrending: true,
-      premiumFeatures: ["360° Virtual Tour", "Professional Videography", "Premium Dashboard", "Dedicated Account Manager"]
+      premiumFeatures: [
+        "360° Virtual Tour",
+        "Professional Videography",
+        "Premium Dashboard",
+        "Dedicated Account Manager",
+      ],
     },
     {
       id: 6,
@@ -204,11 +283,17 @@ function PremiumListings() {
       bathrooms: 1,
       furnished: "Fully furnished",
       furnishingsStatus: "Furnishing status",
-      amenities: ["Rooftop Terrace", "Co-working Space", "Pet Friendly", "Yoga Studio", "Cafe"],
+      amenities: [
+        "Rooftop Terrace",
+        "Co-working Space",
+        "Pet Friendly",
+        "Yoga Studio",
+        "Cafe",
+      ],
       images: [
         "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
         "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
-        "https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+        "https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
       ],
       updated: "2w ago",
       agent: "Puneri House Elite",
@@ -216,15 +301,20 @@ function PremiumListings() {
       views: 128,
       isRecommended: true,
       isTrending: false,
-      premiumFeatures: ["Interior Design Consultation", "Premium Photos", "Social Media Boost", "Email Campaign"]
-    }
+      premiumFeatures: [
+        "Interior Design Consultation",
+        "Premium Photos",
+        "Social Media Boost",
+        "Email Campaign",
+      ],
+    },
   ];
 
   // Filter properties
-  const filteredProperties = premiumProperties.filter(property => {
-    if (activeFilter === 'all') return true;
-    if (activeFilter === 'featured') return property.isFeatured;
-    if (activeFilter === 'new') return property.isNew;
+  const filteredProperties = premiumProperties.filter((property) => {
+    if (activeFilter === "all") return true;
+    if (activeFilter === "featured") return property.isFeatured;
+    if (activeFilter === "new") return property.isNew;
     return true;
   });
 
@@ -232,33 +322,36 @@ function PremiumListings() {
   useEffect(() => {
     const intervals = {};
 
-    premiumProperties.forEach(property => {
+    premiumProperties.forEach((property) => {
       if (property.images && property.images.length > 1) {
         intervals[property.id] = setInterval(() => {
-          setCurrentImageIndex(prev => ({
+          setCurrentImageIndex((prev) => ({
             ...prev,
-            [property.id]: ((prev[property.id] || 0) + 1) % property.images.length
+            [property.id]:
+              ((prev[property.id] || 0) + 1) % property.images.length,
           }));
         }, 4000);
       }
     });
 
     return () => {
-      Object.values(intervals).forEach(interval => clearInterval(interval));
+      Object.values(intervals).forEach((interval) => clearInterval(interval));
     };
   }, []);
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Mobile Header */}
-      <div className="lg:hidden sticky top-0 z-50 bg-gradient-to-r from-yellow-500 to-yellow-400 shadow-sm">
+      <div className="lg:hidden sticky top-13 z-40 bg-gradient-to-r from-yellow-500 to-yellow-400 shadow-sm">
         <div className="flex items-center justify-between p-3">
           <div className="flex items-center gap-2">
             <div className="p-1.5 bg-gray-900/20 rounded-lg">
               <Crown className="h-5 w-5 text-gray-900" />
             </div>
             <div>
-              <h1 className="text-lg font-bold text-gray-900">Premium Listings</h1>
+              <h1 className="text-lg font-bold text-gray-900">
+                Premium Listings
+              </h1>
               <p className="text-xs text-gray-900/80">Exclusive Properties</p>
             </div>
           </div>
@@ -298,8 +391,12 @@ function PremiumListings() {
                   <Crown className="h-8 w-8 text-gray-900" />
                 </div>
                 <div>
-                  <h1 className="text-2xl md:text-3xl font-bold text-gray-900">Premium Listings</h1>
-                  <p className="text-gray-600">Exclusive & High-End Properties</p>
+                  <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+                    Premium Listings
+                  </h1>
+                  <p className="text-gray-600">
+                    Exclusive & High-End Properties
+                  </p>
                 </div>
               </div>
               <div className="mt-3 md:mt-0">
@@ -317,7 +414,10 @@ function PremiumListings() {
                       <option value="newest">Newest First</option>
                       <option value="popular">Most Popular</option>
                     </select>
-                    <ArrowUpDown size={14} className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none" />
+                    <ArrowUpDown
+                      size={14}
+                      className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none"
+                    />
                   </div>
                 </div>
               </div>
@@ -328,8 +428,10 @@ function PremiumListings() {
               <div className="flex items-center gap-3">
                 <Sparkles className="h-5 w-5 text-yellow-600" />
                 <p className="text-gray-700 text-sm">
-                  <span className="font-semibold">Premium Listings</span> feature exclusive properties with professional photography, 
-                  virtual tours, priority support, and enhanced visibility. These listings receive 10x more views and inquiries.
+                  <span className="font-semibold">Premium Listings</span>{" "}
+                  feature exclusive properties with professional photography,
+                  virtual tours, priority support, and enhanced visibility.
+                  These listings receive 10x more views and inquiries.
                 </p>
               </div>
             </div>
@@ -350,12 +452,23 @@ function PremiumListings() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-5">
             {/* Mobile Filters Overlay */}
             {showFilters && (
-              <div className="fixed inset-0 bg-black/50 z-50 lg:hidden" onClick={() => setShowFilters(false)}>
-                <div className="absolute right-0 top-0 h-full w-80 bg-white shadow-lg overflow-y-auto" onClick={e => e.stopPropagation()}>
+              <div
+                className="fixed inset-0 bg-black/50 z-50 lg:hidden"
+                onClick={() => setShowFilters(false)}
+              >
+                <div
+                  className="absolute right-0 top-0 h-full w-80 bg-white shadow-lg overflow-y-auto"
+                  onClick={(e) => e.stopPropagation()}
+                >
                   <div className="p-4">
                     <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-lg font-bold text-gray-900">Filters</h3>
-                      <button onClick={() => setShowFilters(false)} className="p-2">
+                      <h3 className="text-lg font-bold text-gray-900">
+                        Filters
+                      </h3>
+                      <button
+                        onClick={() => setShowFilters(false)}
+                        className="p-2"
+                      >
                         <X size={20} />
                       </button>
                     </div>
@@ -363,13 +476,28 @@ function PremiumListings() {
                     {/* Mobile Filter Content */}
                     <div className="space-y-4">
                       <div>
-                        <h4 className="text-sm font-semibold text-gray-900 mb-2">Price Range</h4>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-2">
+                          Price Range
+                        </h4>
                         <div className="space-y-2">
-                          {["Under ₹50,000", "₹50,000 - ₹1,00,000", "₹1,00,000 - ₹2,00,000", "Above ₹2,00,000"].map((price, idx) => (
-                            <label key={idx} className="flex items-center justify-between cursor-pointer">
+                          {[
+                            "Under ₹50,000",
+                            "₹50,000 - ₹1,00,000",
+                            "₹1,00,000 - ₹2,00,000",
+                            "Above ₹2,00,000",
+                          ].map((price, idx) => (
+                            <label
+                              key={idx}
+                              className="flex items-center justify-between cursor-pointer"
+                            >
                               <div className="flex items-center">
-                                <input type="checkbox" className="rounded border-gray-300 text-yellow-500 focus:ring-yellow-400 h-4 w-4" />
-                                <span className="ml-2 text-sm text-gray-700">{price}</span>
+                                <input
+                                  type="checkbox"
+                                  className="rounded border-gray-300 text-yellow-500 focus:ring-yellow-400 h-4 w-4"
+                                />
+                                <span className="ml-2 text-sm text-gray-700">
+                                  {price}
+                                </span>
                               </div>
                               <span className="text-xs text-gray-500">24</span>
                             </label>
@@ -378,34 +506,53 @@ function PremiumListings() {
                       </div>
 
                       <div>
-                        <h4 className="text-sm font-semibold text-gray-900 mb-2">Property Type</h4>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-2">
+                          Property Type
+                        </h4>
                         <div className="space-y-2">
-                          {["Apartment", "Villa", "Penthouse", "Duplex"].map((type, idx) => (
-                            <label key={idx} className="flex items-center justify-between cursor-pointer">
-                              <div className="flex items-center">
-                                <input type="checkbox" className="rounded border-gray-300 text-yellow-500 focus:ring-yellow-400 h-4 w-4" />
-                                <span className="ml-2 text-sm text-gray-700">{type}</span>
-                              </div>
-                              <span className="text-xs text-gray-500">12</span>
-                            </label>
-                          ))}
+                          {["Apartment", "Villa", "Penthouse", "Duplex"].map(
+                            (type, idx) => (
+                              <label
+                                key={idx}
+                                className="flex items-center justify-between cursor-pointer"
+                              >
+                                <div className="flex items-center">
+                                  <input
+                                    type="checkbox"
+                                    className="rounded border-gray-300 text-yellow-500 focus:ring-yellow-400 h-4 w-4"
+                                  />
+                                  <span className="ml-2 text-sm text-gray-700">
+                                    {type}
+                                  </span>
+                                </div>
+                                <span className="text-xs text-gray-500">
+                                  12
+                                </span>
+                              </label>
+                            )
+                          )}
                         </div>
                       </div>
 
                       <div>
-                        <h4 className="text-sm font-semibold text-gray-900 mb-2">BHK Type</h4>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-2">
+                          BHK Type
+                        </h4>
                         <div className="flex flex-wrap gap-2">
-                          {["2 BHK", "3 BHK", "4 BHK", "4+ BHK"].map((bhk, idx) => (
-                            <button
-                              key={idx}
-                              className={`px-3 py-1.5 border rounded text-sm font-medium transition-colors ${activeFilter === bhk
-                                ? 'border-yellow-400 bg-yellow-50 text-yellow-700'
-                                : 'border-gray-300 text-gray-700 hover:border-yellow-400'
+                          {["2 BHK", "3 BHK", "4 BHK", "4+ BHK"].map(
+                            (bhk, idx) => (
+                              <button
+                                key={idx}
+                                className={`px-3 py-1.5 border rounded text-sm font-medium transition-colors ${
+                                  activeFilter === bhk
+                                    ? "border-yellow-400 bg-yellow-50 text-yellow-700"
+                                    : "border-gray-300 text-gray-700 hover:border-yellow-400"
                                 }`}
-                            >
-                              {bhk}
-                            </button>
-                          ))}
+                              >
+                                {bhk}
+                              </button>
+                            )
+                          )}
                         </div>
                       </div>
 
@@ -429,10 +576,11 @@ function PremiumListings() {
                     <div
                       key={property.id}
                       onClick={() => handlePropertyClick(property.id)}
-                      className={`bg-white rounded-lg shadow-sm overflow-hidden border transition-all duration-200 hover:shadow-md group cursor-pointer ${property.isPremium
-                        ? 'border-yellow-500 shadow-md'
-                        : 'border-gray-200'
-                        }`}
+                      className={`bg-white rounded-lg shadow-sm overflow-hidden border transition-all duration-200 hover:shadow-md group cursor-pointer ${
+                        property.isPremium
+                          ? "border-yellow-500 shadow-md"
+                          : "border-gray-200"
+                      }`}
                     >
                       <div className="flex flex-col md:flex-row h-full">
                         {/* Image Section - Mobile: Full width, Desktop: 2/5 */}
@@ -446,22 +594,27 @@ function PremiumListings() {
                               />
 
                               {/* Carousel Navigation Arrows - Show on hover */}
-                              {property.images && property.images.length > 1 && (
-                                <>
-                                  <button
-                                    onClick={(e) => navigateImage(property.id, 'prev', e)}
-                                    className="hidden md:block absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1.5 rounded-full opacity-0 group-hover/image:opacity-100 transition-opacity z-10"
-                                  >
-                                    <ChevronLeft size={18} />
-                                  </button>
-                                  <button
-                                    onClick={(e) => navigateImage(property.id, 'next', e)}
-                                    className="hidden md:block absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1.5 rounded-full opacity-0 group-hover/image:opacity-100 transition-opacity z-10"
-                                  >
-                                    <ChevronRight size={18} />
-                                  </button>
-                                </>
-                              )}
+                              {property.images &&
+                                property.images.length > 1 && (
+                                  <>
+                                    <button
+                                      onClick={(e) =>
+                                        navigateImage(property.id, "prev", e)
+                                      }
+                                      className="hidden md:block absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1.5 rounded-full opacity-0 group-hover/image:opacity-100 transition-opacity z-10"
+                                    >
+                                      <ChevronLeft size={18} />
+                                    </button>
+                                    <button
+                                      onClick={(e) =>
+                                        navigateImage(property.id, "next", e)
+                                      }
+                                      className="hidden md:block absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1.5 rounded-full opacity-0 group-hover/image:opacity-100 transition-opacity z-10"
+                                    >
+                                      <ChevronRight size={18} />
+                                    </button>
+                                  </>
+                                )}
 
                               {/* Premium Badge */}
                               <div className="absolute top-3 left-3 z-10">
@@ -489,14 +642,19 @@ function PremiumListings() {
                               <div className="absolute top-3 right-3 flex flex-col gap-2 z-10">
                                 <button
                                   onClick={(e) => toggleLike(property.id, e)}
-                                  className={`p-2 rounded-full shadow-sm transition-all ${likedProperties[property.id]
-                                    ? 'bg-red-500 text-white'
-                                    : 'bg-white/90 hover:bg-white text-gray-600'
-                                    }`}
+                                  className={`p-2 rounded-full shadow-sm transition-all ${
+                                    likedProperties[property.id]
+                                      ? "bg-red-500 text-white"
+                                      : "bg-white/90 hover:bg-white text-gray-600"
+                                  }`}
                                 >
                                   <Heart
                                     size={16}
-                                    fill={likedProperties[property.id] ? "currentColor" : "none"}
+                                    fill={
+                                      likedProperties[property.id]
+                                        ? "currentColor"
+                                        : "none"
+                                    }
                                   />
                                 </button>
                               </div>
@@ -508,26 +666,28 @@ function PremiumListings() {
                               </div>
 
                               {/* Carousel Indicators */}
-                              {property.images && property.images.length > 1 && (
-                                <div className="absolute bottom-3 right-3 flex space-x-1.5 z-10">
-                                  {property.images.map((_, idx) => (
-                                    <button
-                                      key={idx}
-                                      onClick={(e) => {
-                                        e.stopPropagation();
-                                        setCurrentImageIndex(prev => ({
-                                          ...prev,
-                                          [property.id]: idx
-                                        }));
-                                      }}
-                                      className={`w-2 h-2 rounded-full transition-all ${idx === currentIndex
-                                        ? 'bg-yellow-400'
-                                        : 'bg-white/80'
+                              {property.images &&
+                                property.images.length > 1 && (
+                                  <div className="absolute bottom-3 right-3 flex space-x-1.5 z-10">
+                                    {property.images.map((_, idx) => (
+                                      <button
+                                        key={idx}
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          setCurrentImageIndex((prev) => ({
+                                            ...prev,
+                                            [property.id]: idx,
+                                          }));
+                                        }}
+                                        className={`w-2 h-2 rounded-full transition-all ${
+                                          idx === currentIndex
+                                            ? "bg-yellow-400"
+                                            : "bg-white/80"
                                         }`}
-                                    />
-                                  ))}
-                                </div>
-                              )}
+                                      />
+                                    ))}
+                                  </div>
+                                )}
                             </div>
                           </div>
                         </div>
@@ -544,16 +704,27 @@ function PremiumListings() {
                                   </h3>
                                 </div>
                                 <div className="flex items-center text-gray-700 mb-1">
-                                  <MapPin size={12} className="text-yellow-500 mr-1 flex-shrink-0" />
-                                  <span className="font-medium text-xs md:text-sm truncate">{property.location}</span>
+                                  <MapPin
+                                    size={12}
+                                    className="text-yellow-500 mr-1 flex-shrink-0"
+                                  />
+                                  <span className="font-medium text-xs md:text-sm truncate">
+                                    {property.location}
+                                  </span>
                                 </div>
-                                <p className="text-xs text-gray-500 truncate">{property.address}</p>
+                                <p className="text-xs text-gray-500 truncate">
+                                  {property.address}
+                                </p>
                               </div>
 
                               <div className="text-right ml-2 flex-shrink-0">
                                 <div className="flex items-baseline gap-1">
-                                  <span className="text-lg md:text-xl font-bold text-gray-900">{property.price}</span>
-                                  <span className="text-xs text-gray-500">/mo</span>
+                                  <span className="text-lg md:text-xl font-bold text-gray-900">
+                                    {property.price}
+                                  </span>
+                                  <span className="text-xs text-gray-500">
+                                    /mo
+                                  </span>
                                 </div>
                                 <Link
                                   to={`/premium-listings/${property.id}/price-breakup`}
@@ -568,12 +739,20 @@ function PremiumListings() {
                             {/* Premium Features */}
                             <div className="mb-3">
                               <div className="flex flex-wrap gap-1">
-                                {property.premiumFeatures.slice(0, 3).map((feature, index) => (
-                                  <span key={index} className="text-xs text-yellow-700 bg-yellow-100 px-2 py-0.5 rounded flex items-center gap-1">
-                                    <Star size={10} className="text-yellow-600" />
-                                    {feature}
-                                  </span>
-                                ))}
+                                {property.premiumFeatures
+                                  .slice(0, 3)
+                                  .map((feature, index) => (
+                                    <span
+                                      key={index}
+                                      className="text-xs text-yellow-700 bg-yellow-100 px-2 py-0.5 rounded flex items-center gap-1"
+                                    >
+                                      <Star
+                                        size={10}
+                                        className="text-yellow-600"
+                                      />
+                                      {feature}
+                                    </span>
+                                  ))}
                                 {property.premiumFeatures.length > 3 && (
                                   <span className="text-xs text-yellow-600 font-medium">
                                     +{property.premiumFeatures.length - 3}
@@ -586,18 +765,28 @@ function PremiumListings() {
                           {/* Middle Row - Property Features */}
                           <div className="grid grid-cols-3 gap-2 md:gap-4 mb-3">
                             <div>
-                              <div className="text-base md:text-lg font-bold text-gray-900">{property.area}</div>
+                              <div className="text-base md:text-lg font-bold text-gray-900">
+                                {property.area}
+                              </div>
                               <div className="text-xs text-gray-500">Area</div>
                             </div>
 
                             <div>
-                              <div className="text-base md:text-lg font-bold text-gray-900">{property.furnished}</div>
-                              <div className="text-xs text-gray-500">Furnish</div>
+                              <div className="text-base md:text-lg font-bold text-gray-900">
+                                {property.furnished}
+                              </div>
+                              <div className="text-xs text-gray-500">
+                                Furnish
+                              </div>
                             </div>
 
                             <div>
-                              <div className="text-base md:text-lg font-bold text-gray-900">Updated</div>
-                              <div className="text-xs text-gray-500">{property.updated}</div>
+                              <div className="text-base md:text-lg font-bold text-gray-900">
+                                Updated
+                              </div>
+                              <div className="text-xs text-gray-500">
+                                {property.updated}
+                              </div>
                             </div>
                           </div>
 
@@ -609,8 +798,12 @@ function PremiumListings() {
                                   <Award size={10} className="text-gray-900" />
                                 </div>
                                 <div className="min-w-0">
-                                  <div className="font-semibold text-gray-900 text-xs md:text-sm truncate">{property.agent}</div>
-                                  <div className="text-xs text-gray-500 truncate">{property.agentType}</div>
+                                  <div className="font-semibold text-gray-900 text-xs md:text-sm truncate">
+                                    {property.agent}
+                                  </div>
+                                  <div className="text-xs text-gray-500 truncate">
+                                    {property.agentType}
+                                  </div>
                                 </div>
                               </div>
 
@@ -627,7 +820,9 @@ function PremiumListings() {
                                   onClick={(e) => e.stopPropagation()}
                                 >
                                   <Phone size={12} />
-                                  <span className="hidden sm:inline">Contact</span>
+                                  <span className="hidden sm:inline">
+                                    Contact
+                                  </span>
                                 </Link>
                               </div>
                             </div>
@@ -654,23 +849,45 @@ function PremiumListings() {
               <div className="bg-gradient-to-br from-yellow-50 to-yellow-100/50 rounded-lg border border-yellow-200 p-4 mb-4">
                 <div className="flex items-center gap-2 mb-3">
                   <Crown className="h-5 w-5 text-yellow-600" />
-                  <h3 className="text-lg font-bold text-gray-900">Premium Benefits</h3>
+                  <h3 className="text-lg font-bold text-gray-900">
+                    Premium Benefits
+                  </h3>
                 </div>
 
                 <div className="space-y-3">
                   {[
-                    { icon: <Zap size={14} />, title: "10x More Views", desc: "Get maximum visibility" },
-                    { icon: <Award size={14} />, title: "Priority Support", desc: "Dedicated account manager" },
-                    { icon: <Sparkles size={14} />, title: "Professional Photos", desc: "High-quality photography" },
-                    { icon: <Eye size={14} />, title: "Virtual Tours", desc: "360° property viewing" }
+                    {
+                      icon: <Zap size={14} />,
+                      title: "10x More Views",
+                      desc: "Get maximum visibility",
+                    },
+                    {
+                      icon: <Award size={14} />,
+                      title: "Priority Support",
+                      desc: "Dedicated account manager",
+                    },
+                    {
+                      icon: <Sparkles size={14} />,
+                      title: "Professional Photos",
+                      desc: "High-quality photography",
+                    },
+                    {
+                      icon: <Eye size={14} />,
+                      title: "Virtual Tours",
+                      desc: "360° property viewing",
+                    },
                   ].map((benefit, idx) => (
                     <div key={idx} className="flex items-start gap-2">
                       <div className="p-1.5 bg-yellow-100 rounded-lg mt-0.5">
                         <div className="text-yellow-600">{benefit.icon}</div>
                       </div>
                       <div>
-                        <div className="font-medium text-gray-900 text-sm">{benefit.title}</div>
-                        <div className="text-xs text-gray-600">{benefit.desc}</div>
+                        <div className="font-medium text-gray-900 text-sm">
+                          {benefit.title}
+                        </div>
+                        <div className="text-xs text-gray-600">
+                          {benefit.desc}
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -686,63 +903,77 @@ function PremiumListings() {
 
               {/* Featured Premium Properties */}
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-4">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">Top Premium</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-4">
+                  Top Premium
+                </h3>
 
                 <div className="space-y-4">
-                  {premiumProperties
-                    .slice(0, 3)
-                    .map((property) => (
-                      <div
-                        key={property.id}
-                        onClick={() => handlePropertyClick(property.id)}
-                        className="border border-gray-200 rounded-lg hover:border-yellow-400 transition-colors cursor-pointer overflow-hidden group"
-                      >
-                        <div className="flex items-start h-28">
-                          <div className="w-24 h-full flex-shrink-0 relative overflow-hidden">
-                            <img
-                              src={property.images[0]}
-                              alt={property.title}
-                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                            />
-                            <div className="absolute top-1 left-1">
-                              <div className="px-1 py-0.5 bg-yellow-500 text-gray-900 text-xs font-bold rounded">
-                                PREMIUM
-                              </div>
+                  {premiumProperties.slice(0, 3).map((property) => (
+                    <div
+                      key={property.id}
+                      onClick={() => handlePropertyClick(property.id)}
+                      className="border border-gray-200 rounded-lg hover:border-yellow-400 transition-colors cursor-pointer overflow-hidden group"
+                    >
+                      <div className="flex items-start h-28">
+                        <div className="w-24 h-full flex-shrink-0 relative overflow-hidden">
+                          <img
+                            src={property.images[0]}
+                            alt={property.title}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                          />
+                          <div className="absolute top-1 left-1">
+                            <div className="px-1 py-0.5 bg-yellow-500 text-gray-900 text-xs font-bold rounded">
+                              PREMIUM
                             </div>
-                          </div>
-                          <div className="flex-1 p-3">
-                            <div className="flex items-baseline gap-1 mb-0.5">
-                              <span className="text-sm font-bold text-gray-900">{property.price}</span>
-                              <span className="text-xs text-gray-500">/mo</span>
-                            </div>
-                            <h4 className="font-semibold text-gray-900 text-xs mb-0.5 truncate">{property.title}</h4>
-                            <p className="text-xs text-gray-600 line-clamp-2">{property.location}</p>
                           </div>
                         </div>
+                        <div className="flex-1 p-3">
+                          <div className="flex items-baseline gap-1 mb-0.5">
+                            <span className="text-sm font-bold text-gray-900">
+                              {property.price}
+                            </span>
+                            <span className="text-xs text-gray-500">/mo</span>
+                          </div>
+                          <h4 className="font-semibold text-gray-900 text-xs mb-0.5 truncate">
+                            {property.title}
+                          </h4>
+                          <p className="text-xs text-gray-600 line-clamp-2">
+                            {property.location}
+                          </p>
+                        </div>
                       </div>
-                    ))}
+                    </div>
+                  ))}
                 </div>
               </div>
 
               {/* Premium Stats */}
               <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg border border-yellow-500/20 p-4">
-                <h3 className="text-lg font-bold text-white mb-4">Premium Stats</h3>
+                <h3 className="text-lg font-bold text-white mb-4">
+                  Premium Stats
+                </h3>
 
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="text-gray-300 text-sm">Average Views</span>
-                    <span className="text-yellow-400 font-bold">10x Higher</span>
+                    <span className="text-yellow-400 font-bold">
+                      10x Higher
+                    </span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-gray-300 text-sm">Inquiry Rate</span>
-                    <span className="text-yellow-400 font-bold">85% Higher</span>
+                    <span className="text-yellow-400 font-bold">
+                      85% Higher
+                    </span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-gray-300 text-sm">Rental Speed</span>
                     <span className="text-yellow-400 font-bold">2x Faster</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-gray-300 text-sm">Tenant Quality</span>
+                    <span className="text-gray-300 text-sm">
+                      Tenant Quality
+                    </span>
                     <span className="text-yellow-400 font-bold">Premium</span>
                   </div>
                 </div>

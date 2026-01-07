@@ -340,8 +340,8 @@ const HeroSection = () => {
                   </div>
 
                   {/* Search Button */}
-                  <div className="md:w-auto flex items-center justify-center">
-                    <button className="bg-gradient-to-r from-yellow-500 to-yellow-400 hover:from-yellow-600 hover:to-yellow-500 text-gray-900 font-semibold px-3 py-1.5 rounded-md transition-all duration-200 flex items-center justify-center shadow-md hover:shadow-lg min-h-[80px]">
+                  <div className="w-full md:w-auto flex items-center justify-center">
+                    <button className="w-full md:w-auto bg-gradient-to-r from-yellow-500 to-yellow-400 hover:from-yellow-600 hover:to-yellow-500 text-gray-900 font-semibold px-3 py-1.5 rounded-md transition-all duration-200 flex items-center justify-center shadow-md hover:shadow-lg min-h-[40px] md:min-h-[80px]">
                       <Search className="w-4 h-4" />
                     </button>
                   </div>

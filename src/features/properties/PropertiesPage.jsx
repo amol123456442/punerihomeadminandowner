@@ -1,21 +1,52 @@
-import React, { useState, useEffect } from 'react';
-import { MapPin, Home, Building, Bath, Star, Phone, Clock, Shield, Users, Heart, Filter, ChevronRight, ChevronLeft, Maximize2, Share2, Check, ChevronDown, Search, ArrowUpDown, Eye, MessageSquare, SquareParking, Dumbbell, Waves, Car, TreePine, ChevronUp, Menu, X, ArrowDown } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import {
+  MapPin,
+  Home,
+  Building,
+  Bath,
+  Star,
+  Phone,
+  Clock,
+  Shield,
+  Users,
+  Heart,
+  Filter,
+  ChevronRight,
+  ChevronLeft,
+  Maximize2,
+  Share2,
+  Check,
+  ChevronDown,
+  Search,
+  ArrowUpDown,
+  Eye,
+  MessageSquare,
+  SquareParking,
+  Dumbbell,
+  Waves,
+  Car,
+  TreePine,
+  ChevronUp,
+  Menu,
+  X,
+  ArrowDown,
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 function PropertiesPage() {
   const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState({});
   const [likedProperties, setLikedProperties] = useState({});
-  const [activeFilter, setActiveFilter] = useState('all');
-  const [sortBy, setSortBy] = useState('relevance');
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [sortBy, setSortBy] = useState("relevance");
   const [showFilters, setShowFilters] = useState(false);
 
   // Toggle like status
   const toggleLike = (id, e) => {
     e.stopPropagation();
-    setLikedProperties(prev => ({
+    setLikedProperties((prev) => ({
       ...prev,
-      [id]: !prev[id]
+      [id]: !prev[id],
     }));
   };
 
@@ -29,18 +60,19 @@ function PropertiesPage() {
   // Navigation for image carousel
   const navigateImage = (propertyId, direction, e) => {
     e.stopPropagation();
-    setCurrentImageIndex(prev => {
+    setCurrentImageIndex((prev) => {
       const current = prev[propertyId] || 0;
-      const property = properties.find(p => p.id === propertyId);
+      const property = properties.find((p) => p.id === propertyId);
       if (!property || !property.images) return prev;
 
-      const newIndex = direction === 'next'
-        ? (current + 1) % property.images.length
-        : (current - 1 + property.images.length) % property.images.length;
+      const newIndex =
+        direction === "next"
+          ? (current + 1) % property.images.length
+          : (current - 1 + property.images.length) % property.images.length;
 
       return {
         ...prev,
-        [propertyId]: newIndex
+        [propertyId]: newIndex,
       };
     });
   };
@@ -65,14 +97,14 @@ function PropertiesPage() {
       images: [
         "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
         "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
-        "https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+        "https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
       ],
       updated: "2w ago",
       agent: "Puneri House Verified",
       agentType: "Property Expert Pro",
       views: 128,
       isRecommended: true,
-      isTrending: false
+      isTrending: false,
     },
     {
       id: 2,
@@ -92,14 +124,14 @@ function PropertiesPage() {
       images: [
         "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
         "https://images.unsplash.com/photo-1560448205-97abe7378152?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
-        "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+        "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
       ],
       updated: "1w ago",
       agent: "Puneri House Premium",
       agentType: "Property Expert Pro",
       views: 245,
       isRecommended: true,
-      isTrending: true
+      isTrending: true,
     },
     {
       id: 3,
@@ -118,14 +150,14 @@ function PropertiesPage() {
       images: [
         "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
         "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
-        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
       ],
       updated: "3d ago",
       agent: "Puneri House Elite",
       agentType: "Property Expert Pro",
       views: 189,
       isRecommended: false,
-      isTrending: true
+      isTrending: true,
     },
     {
       id: 4,
@@ -144,14 +176,14 @@ function PropertiesPage() {
       images: [
         "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
         "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
-        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
       ],
       updated: "5d ago",
       agent: "Puneri House Verified",
       agentType: "Property Expert Pro",
       views: 156,
       isRecommended: true,
-      isTrending: false
+      isTrending: false,
     },
     {
       id: 5,
@@ -170,14 +202,14 @@ function PropertiesPage() {
       images: [
         "https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
         "https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
-        "https://images.unsplash.com/photo-1600585154340-963ed7476c06?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+        "https://images.unsplash.com/photo-1600585154340-963ed7476c06?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
       ],
       updated: "1d ago",
       agent: "Puneri House Elite",
       agentType: "Property Expert Premium",
       views: 89,
       isRecommended: false,
-      isTrending: true
+      isTrending: true,
     },
     {
       id: 6,
@@ -198,22 +230,22 @@ function PropertiesPage() {
       images: [
         "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
         "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
-        "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80"
+        "https://images.unsplash.com/photo-1600607687644-c7171b42498b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
       ],
       updated: "4h ago",
       agent: "Puneri House Verified",
       agentType: "Property Expert Basic",
       views: 42,
       isRecommended: true,
-      isTrending: false
-    }
+      isTrending: false,
+    },
   ];
 
   // Filter properties
-  const filteredProperties = properties.filter(property => {
-    if (activeFilter === 'all') return true;
-    if (activeFilter === 'featured') return property.isFeatured;
-    if (activeFilter === 'new') return property.isNew;
+  const filteredProperties = properties.filter((property) => {
+    if (activeFilter === "all") return true;
+    if (activeFilter === "featured") return property.isFeatured;
+    if (activeFilter === "new") return property.isNew;
     return true;
   });
 
@@ -221,26 +253,28 @@ function PropertiesPage() {
   useEffect(() => {
     const intervals = {};
 
-    properties.forEach(property => {
+    properties.forEach((property) => {
       if (property.images && property.images.length > 1) {
         intervals[property.id] = setInterval(() => {
-          setCurrentImageIndex(prev => ({
+          setCurrentImageIndex((prev) => ({
             ...prev,
-            [property.id]: ((prev[property.id] || 0) + 1) % property.images.length
+            [property.id]:
+              ((prev[property.id] || 0) + 1) % property.images.length,
           }));
         }, 4000);
       }
     });
 
     return () => {
-      Object.values(intervals).forEach(interval => clearInterval(interval));
+      Object.values(intervals).forEach((interval) => clearInterval(interval));
     };
   }, []);
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Mobile Header */}
-      <div className="lg:hidden sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+      {/* Mobile Header */}
+      <div className="lg:hidden sticky top-13 z-40 bg-white border-b border-gray-200 shadow-sm">
         <div className="flex items-center justify-between p-3">
           <div>
             <h1 className="text-lg font-bold text-gray-900">Flats in Pune</h1>
@@ -278,7 +312,9 @@ function PropertiesPage() {
           <div className="hidden lg:block mb-6">
             <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
               <div>
-                <h1 className="text-2xl md:text-3xl font-bold text-gray-900">Flats for Rent in Pune</h1>
+                <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
+                  Flats for Rent in Pune
+                </h1>
               </div>
               <div className="mt-3 md:mt-0">
                 <div className="flex items-center gap-2">
@@ -295,7 +331,10 @@ function PropertiesPage() {
                       <option value="newest">Newest First</option>
                       <option value="popular">Most Popular</option>
                     </select>
-                    <ArrowUpDown size={14} className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none" />
+                    <ArrowUpDown
+                      size={14}
+                      className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none"
+                    />
                   </div>
                 </div>
               </div>
@@ -304,9 +343,13 @@ function PropertiesPage() {
             {/* Description Box */}
             <div className="bg-gradient-to-r from-yellow-50 to-yellow-100/50 border border-yellow-200 rounded-lg p-3 md:p-4 mb-6">
               <p className="text-gray-700 text-sm">
-                Looking for Rental Property in Pune? <span className="font-semibold">Puneri House</span> offers 21138+ Flats for rent & 845+ Houses for rent.
-                Search from 15157+ 2 & 3 BHK Flats in prime locations.
-                <span className="text-yellow-600 font-semibold cursor-pointer hover:text-yellow-700 ml-1">Read more</span>
+                Looking for Rental Property in Pune?{" "}
+                <span className="font-semibold">Puneri House</span> offers
+                21138+ Flats for rent & 845+ Houses for rent. Search from 15157+
+                2 & 3 BHK Flats in prime locations.
+                <span className="text-yellow-600 font-semibold cursor-pointer hover:text-yellow-700 ml-1">
+                  Read more
+                </span>
               </p>
             </div>
           </div>
@@ -315,8 +358,11 @@ function PropertiesPage() {
           <div className="lg:hidden mb-4">
             <div className="bg-gradient-to-r from-yellow-50 to-yellow-100/50 border border-yellow-200 rounded-lg p-3">
               <p className="text-gray-700 text-xs">
-                <span className="font-semibold">Puneri House</span> offers 21138+ Flats for rent in Pune.
-                <span className="text-yellow-600 font-semibold cursor-pointer hover:text-yellow-700 ml-1">Read more</span>
+                <span className="font-semibold">Puneri House</span> offers
+                21138+ Flats for rent in Pune.
+                <span className="text-yellow-600 font-semibold cursor-pointer hover:text-yellow-700 ml-1">
+                  Read more
+                </span>
               </p>
             </div>
           </div>
@@ -324,12 +370,23 @@ function PropertiesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-5">
             {/* Mobile Filters Overlay */}
             {showFilters && (
-              <div className="fixed inset-0 bg-black/50 z-50 lg:hidden" onClick={() => setShowFilters(false)}>
-                <div className="absolute right-0 top-0 h-full w-80 bg-white shadow-lg overflow-y-auto" onClick={e => e.stopPropagation()}>
+              <div
+                className="fixed inset-0 bg-black/50 z-50 lg:hidden"
+                onClick={() => setShowFilters(false)}
+              >
+                <div
+                  className="absolute right-0 top-0 h-full w-80 bg-white shadow-lg overflow-y-auto"
+                  onClick={(e) => e.stopPropagation()}
+                >
                   <div className="p-4">
                     <div className="flex items-center justify-between mb-4">
-                      <h3 className="text-lg font-bold text-gray-900">Filters</h3>
-                      <button onClick={() => setShowFilters(false)} className="p-2">
+                      <h3 className="text-lg font-bold text-gray-900">
+                        Filters
+                      </h3>
+                      <button
+                        onClick={() => setShowFilters(false)}
+                        className="p-2"
+                      >
                         <X size={20} />
                       </button>
                     </div>
@@ -337,49 +394,83 @@ function PropertiesPage() {
                     {/* Mobile Filter Content */}
                     <div className="space-y-4">
                       <div>
-                        <h4 className="text-sm font-semibold text-gray-900 mb-2">Price Range</h4>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-2">
+                          Price Range
+                        </h4>
                         <div className="space-y-2">
-                          {["Under ₹20,000", "₹20,000 - ₹30,000", "₹30,000 - ₹50,000", "Above ₹50,000"].map((price, idx) => (
-                            <label key={idx} className="flex items-center justify-between cursor-pointer">
+                          {[
+                            "Under ₹20,000",
+                            "₹20,000 - ₹30,000",
+                            "₹30,000 - ₹50,000",
+                            "Above ₹50,000",
+                          ].map((price, idx) => (
+                            <label
+                              key={idx}
+                              className="flex items-center justify-between cursor-pointer"
+                            >
                               <div className="flex items-center">
-                                <input type="checkbox" className="rounded border-gray-300 text-yellow-500 focus:ring-yellow-400 h-4 w-4" />
-                                <span className="ml-2 text-sm text-gray-700">{price}</span>
+                                <input
+                                  type="checkbox"
+                                  className="rounded border-gray-300 text-yellow-500 focus:ring-yellow-400 h-4 w-4"
+                                />
+                                <span className="ml-2 text-sm text-gray-700">
+                                  {price}
+                                </span>
                               </div>
-                              <span className="text-xs text-gray-500">1,234</span>
+                              <span className="text-xs text-gray-500">
+                                1,234
+                              </span>
                             </label>
                           ))}
                         </div>
                       </div>
 
                       <div>
-                        <h4 className="text-sm font-semibold text-gray-900 mb-2">Property Type</h4>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-2">
+                          Property Type
+                        </h4>
                         <div className="space-y-2">
                           {["Flat", "House", "Villa", "PG"].map((type, idx) => (
-                            <label key={idx} className="flex items-center justify-between cursor-pointer">
+                            <label
+                              key={idx}
+                              className="flex items-center justify-between cursor-pointer"
+                            >
                               <div className="flex items-center">
-                                <input type="checkbox" className="rounded border-gray-300 text-yellow-500 focus:ring-yellow-400 h-4 w-4" />
-                                <span className="ml-2 text-sm text-gray-700">{type}</span>
+                                <input
+                                  type="checkbox"
+                                  className="rounded border-gray-300 text-yellow-500 focus:ring-yellow-400 h-4 w-4"
+                                />
+                                <span className="ml-2 text-sm text-gray-700">
+                                  {type}
+                                </span>
                               </div>
-                              <span className="text-xs text-gray-500">1,234</span>
+                              <span className="text-xs text-gray-500">
+                                1,234
+                              </span>
                             </label>
                           ))}
                         </div>
                       </div>
 
                       <div>
-                        <h4 className="text-sm font-semibold text-gray-900 mb-2">BHK Type</h4>
+                        <h4 className="text-sm font-semibold text-gray-900 mb-2">
+                          BHK Type
+                        </h4>
                         <div className="flex flex-wrap gap-2">
-                          {["1 BHK", "2 BHK", "3 BHK", "4 BHK", "4+ BHK"].map((bhk, idx) => (
-                            <button
-                              key={idx}
-                              className={`px-3 py-1.5 border rounded text-sm font-medium transition-colors ${activeFilter === bhk
-                                ? 'border-yellow-400 bg-yellow-50 text-yellow-700'
-                                : 'border-gray-300 text-gray-700 hover:border-yellow-400'
+                          {["1 BHK", "2 BHK", "3 BHK", "4 BHK", "4+ BHK"].map(
+                            (bhk, idx) => (
+                              <button
+                                key={idx}
+                                className={`px-3 py-1.5 border rounded text-sm font-medium transition-colors ${
+                                  activeFilter === bhk
+                                    ? "border-yellow-400 bg-yellow-50 text-yellow-700"
+                                    : "border-gray-300 text-gray-700 hover:border-yellow-400"
                                 }`}
-                            >
-                              {bhk}
-                            </button>
-                          ))}
+                              >
+                                {bhk}
+                              </button>
+                            )
+                          )}
                         </div>
                       </div>
 
@@ -403,10 +494,11 @@ function PropertiesPage() {
                     <div
                       key={property.id}
                       onClick={() => handlePropertyClick(property.id)}
-                      className={`bg-white rounded-lg shadow-sm overflow-hidden border transition-all duration-200 hover:shadow-md group cursor-pointer ${property.isFeatured
-                        ? 'border-yellow-300'
-                        : 'border-gray-200'
-                        }`}
+                      className={`bg-white rounded-lg shadow-sm overflow-hidden border transition-all duration-200 hover:shadow-md group cursor-pointer ${
+                        property.isFeatured
+                          ? "border-yellow-300"
+                          : "border-gray-200"
+                      }`}
                     >
                       <div className="flex flex-col md:flex-row h-full">
                         {/* Image Section - Mobile: Full width, Desktop: 2/5 */}
@@ -420,22 +512,27 @@ function PropertiesPage() {
                               />
 
                               {/* Carousel Navigation Arrows - Show on hover */}
-                              {property.images && property.images.length > 1 && (
-                                <>
-                                  <button
-                                    onClick={(e) => navigateImage(property.id, 'prev', e)}
-                                    className="hidden md:block absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1.5 rounded-full opacity-0 group-hover/image:opacity-100 transition-opacity z-10"
-                                  >
-                                    <ChevronLeft size={18} />
-                                  </button>
-                                  <button
-                                    onClick={(e) => navigateImage(property.id, 'next', e)}
-                                    className="hidden md:block absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1.5 rounded-full opacity-0 group-hover/image:opacity-100 transition-opacity z-10"
-                                  >
-                                    <ChevronRight size={18} />
-                                  </button>
-                                </>
-                              )}
+                              {property.images &&
+                                property.images.length > 1 && (
+                                  <>
+                                    <button
+                                      onClick={(e) =>
+                                        navigateImage(property.id, "prev", e)
+                                      }
+                                      className="hidden md:block absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1.5 rounded-full opacity-0 group-hover/image:opacity-100 transition-opacity z-10"
+                                    >
+                                      <ChevronLeft size={18} />
+                                    </button>
+                                    <button
+                                      onClick={(e) =>
+                                        navigateImage(property.id, "next", e)
+                                      }
+                                      className="hidden md:block absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1.5 rounded-full opacity-0 group-hover/image:opacity-100 transition-opacity z-10"
+                                    >
+                                      <ChevronRight size={18} />
+                                    </button>
+                                  </>
+                                )}
 
                               {/* Badges on Image */}
                               <div className="absolute top-3 left-3 flex flex-col gap-1 z-10">
@@ -460,14 +557,19 @@ function PropertiesPage() {
                               <div className="absolute top-3 right-3 flex flex-col gap-2 z-10">
                                 <button
                                   onClick={(e) => toggleLike(property.id, e)}
-                                  className={`p-2 rounded-full shadow-sm transition-all ${likedProperties[property.id]
-                                    ? 'bg-red-500 text-white'
-                                    : 'bg-white/90 hover:bg-white text-gray-600'
-                                    }`}
+                                  className={`p-2 rounded-full shadow-sm transition-all ${
+                                    likedProperties[property.id]
+                                      ? "bg-red-500 text-white"
+                                      : "bg-white/90 hover:bg-white text-gray-600"
+                                  }`}
                                 >
                                   <Heart
                                     size={16}
-                                    fill={likedProperties[property.id] ? "currentColor" : "none"}
+                                    fill={
+                                      likedProperties[property.id]
+                                        ? "currentColor"
+                                        : "none"
+                                    }
                                   />
                                 </button>
                               </div>
@@ -479,26 +581,28 @@ function PropertiesPage() {
                               </div>
 
                               {/* Carousel Indicators */}
-                              {property.images && property.images.length > 1 && (
-                                <div className="absolute bottom-3 right-3 flex space-x-1.5 z-10">
-                                  {property.images.map((_, idx) => (
-                                    <button
-                                      key={idx}
-                                      onClick={(e) => {
-                                        e.stopPropagation();
-                                        setCurrentImageIndex(prev => ({
-                                          ...prev,
-                                          [property.id]: idx
-                                        }));
-                                      }}
-                                      className={`w-2 h-2 rounded-full transition-all ${idx === currentIndex
-                                        ? 'bg-yellow-400'
-                                        : 'bg-white/80'
+                              {property.images &&
+                                property.images.length > 1 && (
+                                  <div className="absolute bottom-3 right-3 flex space-x-1.5 z-10">
+                                    {property.images.map((_, idx) => (
+                                      <button
+                                        key={idx}
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          setCurrentImageIndex((prev) => ({
+                                            ...prev,
+                                            [property.id]: idx,
+                                          }));
+                                        }}
+                                        className={`w-2 h-2 rounded-full transition-all ${
+                                          idx === currentIndex
+                                            ? "bg-yellow-400"
+                                            : "bg-white/80"
                                         }`}
-                                    />
-                                  ))}
-                                </div>
-                              )}
+                                      />
+                                    ))}
+                                  </div>
+                                )}
                             </div>
                           </div>
                         </div>
@@ -513,16 +617,27 @@ function PropertiesPage() {
                                   {property.title}
                                 </h3>
                                 <div className="flex items-center text-gray-700 mb-1">
-                                  <MapPin size={12} className="text-yellow-500 mr-1 flex-shrink-0" />
-                                  <span className="font-medium text-xs md:text-sm truncate">{property.location}</span>
+                                  <MapPin
+                                    size={12}
+                                    className="text-yellow-500 mr-1 flex-shrink-0"
+                                  />
+                                  <span className="font-medium text-xs md:text-sm truncate">
+                                    {property.location}
+                                  </span>
                                 </div>
-                                <p className="text-xs text-gray-500 truncate">{property.address}</p>
+                                <p className="text-xs text-gray-500 truncate">
+                                  {property.address}
+                                </p>
                               </div>
 
                               <div className="text-right ml-2 flex-shrink-0">
                                 <div className="flex items-baseline gap-1">
-                                  <span className="text-lg md:text-xl font-bold text-gray-900">{property.price}</span>
-                                  <span className="text-xs text-gray-500">/mo</span>
+                                  <span className="text-lg md:text-xl font-bold text-gray-900">
+                                    {property.price}
+                                  </span>
+                                  <span className="text-xs text-gray-500">
+                                    /mo
+                                  </span>
                                 </div>
                                 {property.originalPrice && (
                                   <div className="text-xs text-gray-500 line-through mt-0.5">
@@ -544,11 +659,16 @@ function PropertiesPage() {
                             {/* Amenities - Mobile: Show less */}
                             <div className="mb-3">
                               <div className="flex flex-wrap gap-1">
-                                {property.amenities.slice(0, 3).map((amenity, index) => (
-                                  <span key={index} className="text-xs text-gray-600 bg-gray-100 px-2 py-0.5 rounded">
-                                    {amenity}
-                                  </span>
-                                ))}
+                                {property.amenities
+                                  .slice(0, 3)
+                                  .map((amenity, index) => (
+                                    <span
+                                      key={index}
+                                      className="text-xs text-gray-600 bg-gray-100 px-2 py-0.5 rounded"
+                                    >
+                                      {amenity}
+                                    </span>
+                                  ))}
                                 {property.amenities.length > 3 && (
                                   <span className="text-xs text-yellow-600 font-medium">
                                     +{property.amenities.length - 3}
@@ -561,18 +681,28 @@ function PropertiesPage() {
                           {/* Middle Row - Property Features */}
                           <div className="grid grid-cols-3 gap-2 md:gap-4 mb-3">
                             <div>
-                              <div className="text-base md:text-lg font-bold text-gray-900">{property.area}</div>
+                              <div className="text-base md:text-lg font-bold text-gray-900">
+                                {property.area}
+                              </div>
                               <div className="text-xs text-gray-500">Area</div>
                             </div>
 
                             <div>
-                              <div className="text-base md:text-lg font-bold text-gray-900">{property.furnished}</div>
-                              <div className="text-xs text-gray-500">Furnish</div>
+                              <div className="text-base md:text-lg font-bold text-gray-900">
+                                {property.furnished}
+                              </div>
+                              <div className="text-xs text-gray-500">
+                                Furnish
+                              </div>
                             </div>
 
                             <div>
-                              <div className="text-base md:text-lg font-bold text-gray-900">Updated</div>
-                              <div className="text-xs text-gray-500">{property.updated}</div>
+                              <div className="text-base md:text-lg font-bold text-gray-900">
+                                Updated
+                              </div>
+                              <div className="text-xs text-gray-500">
+                                {property.updated}
+                              </div>
                             </div>
                           </div>
 
@@ -584,8 +714,12 @@ function PropertiesPage() {
                                   <Shield size={10} className="text-gray-900" />
                                 </div>
                                 <div className="min-w-0">
-                                  <div className="font-semibold text-gray-900 text-xs md:text-sm truncate">{property.agent}</div>
-                                  <div className="text-xs text-gray-500 truncate">{property.agentType}</div>
+                                  <div className="font-semibold text-gray-900 text-xs md:text-sm truncate">
+                                    {property.agent}
+                                  </div>
+                                  <div className="text-xs text-gray-500 truncate">
+                                    {property.agentType}
+                                  </div>
                                 </div>
                               </div>
 
@@ -601,11 +735,15 @@ function PropertiesPage() {
                                   onClick={(e) => {
                                     e.stopPropagation();
                                     // Contact button action
-                                    console.log(`Contact agent for property ${property.id}`);
+                                    console.log(
+                                      `Contact agent for property ${property.id}`
+                                    );
                                   }}
                                 >
                                   <Phone size={12} />
-                                  <span className="hidden sm:inline">Contact</span>
+                                  <span className="hidden sm:inline">
+                                    Contact
+                                  </span>
                                 </button>
                               </div>
                             </div>
@@ -620,7 +758,8 @@ function PropertiesPage() {
               {/* Load More Button */}
               <div className="mt-6 text-center">
                 <button className="bg-gradient-to-r from-yellow-500 to-yellow-400 text-gray-900 font-bold px-6 py-2.5 rounded-lg hover:shadow-lg transition-all duration-300 flex items-center gap-2 min-w-[180px] justify-center whitespace-nowrap hover:scale-105 transform mx-auto">
-                  <ChevronDown size={20} /> {/* or use: <Plus size={20} /> or <ArrowDown size={20} /> */}
+                  <ChevronDown size={20} />{" "}
+                  {/* or use: <Plus size={20} /> or <ArrowDown size={20} /> */}
                   Load More Properties
                 </button>
               </div>
@@ -630,7 +769,9 @@ function PropertiesPage() {
             <div className="hidden lg:block lg:col-span-4">
               {/* Featured Properties Section */}
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-4">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">Featured Properties</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-4">
+                  Featured Properties
+                </h3>
 
                 <div className="space-y-4">
                   {[
@@ -642,7 +783,9 @@ function PropertiesPage() {
                       agent: "Rental Dharagar",
                       agentType: "Property Expert Pro",
                       icon: <Building size={16} className="text-yellow-500" />,
-                      images: ["https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"]
+                      images: [
+                        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80",
+                      ],
                     },
                     {
                       id: 4,
@@ -652,7 +795,9 @@ function PropertiesPage() {
                       agent: "Tajas Yevanie",
                       agentType: "Property Expert Pro",
                       icon: <Home size={16} className="text-yellow-500" />,
-                      images: ["https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"]
+                      images: [
+                        "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80",
+                      ],
                     },
                     {
                       id: 5,
@@ -662,8 +807,10 @@ function PropertiesPage() {
                       agent: "Puneri House Elite",
                       agentType: "Property Expert Premium",
                       icon: <Building size={16} className="text-yellow-500" />,
-                      images: ["https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"]
-                    }
+                      images: [
+                        "https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80",
+                      ],
+                    },
                   ].map((featured, idx) => (
                     <div
                       key={idx}
@@ -681,14 +828,26 @@ function PropertiesPage() {
                         </div>
                         <div className="flex-1 p-3">
                           <div className="flex items-baseline gap-1 mb-1">
-                            <span className="text-lg font-bold text-gray-900">{featured.price}</span>
-                            <span className="text-xs text-gray-500">per month</span>
+                            <span className="text-lg font-bold text-gray-900">
+                              {featured.price}
+                            </span>
+                            <span className="text-xs text-gray-500">
+                              per month
+                            </span>
                           </div>
-                          <h4 className="font-semibold text-gray-900 text-sm mb-0.5 truncate">{featured.title}</h4>
-                          <p className="text-xs text-gray-600 mb-1 line-clamp-2">{featured.location}</p>
+                          <h4 className="font-semibold text-gray-900 text-sm mb-0.5 truncate">
+                            {featured.title}
+                          </h4>
+                          <p className="text-xs text-gray-600 mb-1 line-clamp-2">
+                            {featured.location}
+                          </p>
                           <div className="flex items-center justify-between">
-                            <div className="text-xs text-gray-500 truncate">{featured.agent}</div>
-                            <span className="text-xs font-medium text-yellow-600 whitespace-nowrap">{featured.agentType}</span>
+                            <div className="text-xs text-gray-500 truncate">
+                              {featured.agent}
+                            </div>
+                            <span className="text-xs font-medium text-yellow-600 whitespace-nowrap">
+                              {featured.agentType}
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -699,25 +858,39 @@ function PropertiesPage() {
 
               {/* Filters Card */}
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-4">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">Filters</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-4">
+                  Filters
+                </h3>
 
                 <div className="space-y-4">
                   {/* Price Range */}
                   <div>
-                    <h4 className="text-sm font-semibold text-gray-900 mb-2">Price Range</h4>
+                    <h4 className="text-sm font-semibold text-gray-900 mb-2">
+                      Price Range
+                    </h4>
                     <div className="space-y-2">
                       {[
                         { label: "Under ₹20,000", count: "1,234" },
                         { label: "₹20,000 - ₹30,000", count: "4,567" },
                         { label: "₹30,000 - ₹50,000", count: "2,345" },
-                        { label: "Above ₹50,000", count: "890" }
+                        { label: "Above ₹50,000", count: "890" },
                       ].map((price, idx) => (
-                        <label key={idx} className="flex items-center justify-between cursor-pointer">
+                        <label
+                          key={idx}
+                          className="flex items-center justify-between cursor-pointer"
+                        >
                           <div className="flex items-center">
-                            <input type="checkbox" className="rounded border-gray-300 text-yellow-500 focus:ring-yellow-400 h-4 w-4" />
-                            <span className="ml-2 text-sm text-gray-700">{price.label}</span>
+                            <input
+                              type="checkbox"
+                              className="rounded border-gray-300 text-yellow-500 focus:ring-yellow-400 h-4 w-4"
+                            />
+                            <span className="ml-2 text-sm text-gray-700">
+                              {price.label}
+                            </span>
                           </div>
-                          <span className="text-xs text-gray-500">{price.count}</span>
+                          <span className="text-xs text-gray-500">
+                            {price.count}
+                          </span>
                         </label>
                       ))}
                     </div>
@@ -725,13 +898,23 @@ function PropertiesPage() {
 
                   {/* Property Type */}
                   <div>
-                    <h4 className="text-sm font-semibold text-gray-900 mb-2">Property Type</h4>
+                    <h4 className="text-sm font-semibold text-gray-900 mb-2">
+                      Property Type
+                    </h4>
                     <div className="space-y-2">
                       {["Flat", "House", "Villa", "PG"].map((type, idx) => (
-                        <label key={idx} className="flex items-center justify-between cursor-pointer">
+                        <label
+                          key={idx}
+                          className="flex items-center justify-between cursor-pointer"
+                        >
                           <div className="flex items-center">
-                            <input type="checkbox" className="rounded border-gray-300 text-yellow-500 focus:ring-yellow-400 h-4 w-4" />
-                            <span className="ml-2 text-sm text-gray-700">{type}</span>
+                            <input
+                              type="checkbox"
+                              className="rounded border-gray-300 text-yellow-500 focus:ring-yellow-400 h-4 w-4"
+                            />
+                            <span className="ml-2 text-sm text-gray-700">
+                              {type}
+                            </span>
                           </div>
                           <span className="text-xs text-gray-500">1,234</span>
                         </label>
@@ -741,19 +924,24 @@ function PropertiesPage() {
 
                   {/* BHK Type */}
                   <div>
-                    <h4 className="text-sm font-semibold text-gray-900 mb-2">BHK Type</h4>
+                    <h4 className="text-sm font-semibold text-gray-900 mb-2">
+                      BHK Type
+                    </h4>
                     <div className="flex flex-wrap gap-2">
-                      {["1 BHK", "2 BHK", "3 BHK", "4 BHK", "4+ BHK"].map((bhk, idx) => (
-                        <button
-                          key={idx}
-                          className={`px-3 py-1.5 border rounded text-sm font-medium transition-colors ${activeFilter === bhk
-                            ? 'border-yellow-400 bg-yellow-50 text-yellow-700'
-                            : 'border-gray-300 text-gray-700 hover:border-yellow-400'
+                      {["1 BHK", "2 BHK", "3 BHK", "4 BHK", "4+ BHK"].map(
+                        (bhk, idx) => (
+                          <button
+                            key={idx}
+                            className={`px-3 py-1.5 border rounded text-sm font-medium transition-colors ${
+                              activeFilter === bhk
+                                ? "border-yellow-400 bg-yellow-50 text-yellow-700"
+                                : "border-gray-300 text-gray-700 hover:border-yellow-400"
                             }`}
-                        >
-                          {bhk}
-                        </button>
-                      ))}
+                          >
+                            {bhk}
+                          </button>
+                        )
+                      )}
                     </div>
                   </div>
 
@@ -765,7 +953,9 @@ function PropertiesPage() {
 
               {/* Popular Amenities */}
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">Popular Amenities</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-4">
+                  Popular Amenities
+                </h3>
                 <div className="grid grid-cols-2 gap-2">
                   {[
                     { icon: <Waves size={16} />, label: "Pool" },
@@ -773,11 +963,16 @@ function PropertiesPage() {
                     { icon: <SquareParking size={16} />, label: "Parking" },
                     { icon: <TreePine size={16} />, label: "Garden" },
                     { icon: <Car size={16} />, label: "Car Park" },
-                    { icon: <Shield size={16} />, label: "Security" }
+                    { icon: <Shield size={16} />, label: "Security" },
                   ].map((amenity, idx) => (
-                    <div key={idx} className="flex items-center gap-2 p-2 border border-gray-200 rounded hover:border-yellow-300 cursor-pointer transition-colors">
+                    <div
+                      key={idx}
+                      className="flex items-center gap-2 p-2 border border-gray-200 rounded hover:border-yellow-300 cursor-pointer transition-colors"
+                    >
                       <div className="text-yellow-500">{amenity.icon}</div>
-                      <span className="text-sm text-gray-700">{amenity.label}</span>
+                      <span className="text-sm text-gray-700">
+                        {amenity.label}
+                      </span>
                     </div>
                   ))}
                 </div>
