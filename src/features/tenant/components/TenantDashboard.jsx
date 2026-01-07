@@ -451,7 +451,6 @@ function TenantDashboard() {
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
-            
                   <button
                     onClick={handleBuyCredits}
                     className="px-3 py-1.5 text-xs bg-blue-600 text-white rounded-lg hover:bg-blue-700 flex items-center gap-1"
@@ -552,13 +551,13 @@ function TenantDashboard() {
                   </p>
                 </div>
                 <div className="flex items-center gap-4">
-                  <div className="text-center">
+                  <div className="text-center border-r border-blue-300 pr-4">
                     <div className="text-lg font-bold text-blue-900">₹99</div>
-                    <div className="text-xs text-blue-700">= 1 Credit</div>
+                    <div className="text-xs text-blue-700">1 Credit</div>
                   </div>
                   <div className="text-center">
                     <div className="text-lg font-bold text-blue-900">₹149</div>
-                    <div className="text-xs text-blue-700">= 3 Credits</div>
+                    <div className="text-xs text-blue-700">3 Credits</div>
                   </div>
                   <button
                     onClick={handleBuyCredits}
@@ -905,39 +904,48 @@ function TenantDashboard() {
             </div>
 
             {/* Credit Summary Card */}
-            <div className="mt-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg text-white p-5">
-              <div className="flex items-center justify-between">
+            <div className="mt-6 bg-white rounded-lg border border-gray-200 p-4 shadow-sm">
+              <div className="flex items-center justify-between mb-4">
                 <div>
-                  <h3 className="text-lg font-bold">Credit Summary</h3>
-                  <p className="text-sm text-blue-100">
-                    Track your credit usage and balance
+                  <h3 className="text-base font-semibold text-gray-900">
+                    Credit Summary
+                  </h3>
+                  <p className="text-sm text-gray-600 mt-1">
+                    Track your credit usage
                   </p>
                 </div>
                 <div className="text-right">
-                  <div className="text-3xl font-bold">
+                  <div className="text-2xl font-bold text-blue-600">
                     {tenantData.creditBalance}
                   </div>
-                  <div className="text-sm text-blue-200">Available Credits</div>
+                  <div className="text-xs text-gray-500">Available Credits</div>
                 </div>
               </div>
-              <div className="grid grid-cols-3 gap-4 mt-4">
-                <div className="text-center">
-                  <div className="text-xl font-bold">
+
+              <div className="grid grid-cols-3 gap-3">
+                <div className="text-center p-3 bg-blue-50 rounded-lg">
+                  <div className="text-lg font-bold text-blue-700">
                     {tenantData.totalCreditsPurchased}
                   </div>
-                  <div className="text-sm text-blue-200">Total Purchased</div>
+                  <div className="text-xs text-gray-600 mt-1">
+                    Total Purchased
+                  </div>
                 </div>
-                <div className="text-center">
-                  <div className="text-xl font-bold">
+
+                <div className="text-center p-3 bg-gray-50 rounded-lg">
+                  <div className="text-lg font-bold text-gray-700">
                     {tenantData.totalCreditsUsed}
                   </div>
-                  <div className="text-sm text-blue-200">Used</div>
+                  <div className="text-xs text-gray-600 mt-1">Used</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-xl font-bold">
+
+                <div className="text-center p-3 bg-green-50 rounded-lg">
+                  <div className="text-lg font-bold text-green-700">
                     {tenantData.remainingContacts}
                   </div>
-                  <div className="text-sm text-blue-200">Contacts Left</div>
+                  <div className="text-xs text-gray-600 mt-1">
+                    Contacts Left
+                  </div>
                 </div>
               </div>
             </div>
@@ -1151,7 +1159,7 @@ function TenantDashboard() {
             </div>
 
             <div className="text-[11px] text-gray-300 mb-3">
-              ₹99 = 1 Contact &nbsp; • &nbsp; ₹149 = 3 Contacts
+              ₹99 = 1 Contact &nbsp; <br /> ₹149 = 3 Contacts
             </div>
 
             <button
