@@ -32,6 +32,7 @@ import TermsOfUse from "../pages/Footer/TermsofUse";
 
 // Import Admin Components
 import AdminDashboard from "../features/admin/components/AdminDashboard";
+import TenantDashboard from "../features/tenant/components/TenantDashboard";
 // import AdminProperties from "../features/admin/AdminProperties";
 // import AdminOwners from "../features/admin/AdminOwners";
 // import AdminTenants from "../features/admin/AdminTenants";
@@ -62,6 +63,9 @@ const AuthLayout = ({ children }) => {
 };
 
 const AdminLayout = ({ children }) => {
+  return <>{children}</>;
+};
+const TenantLayout = ({ children }) => {
   return <>{children}</>;
 };
 
@@ -305,6 +309,16 @@ const AppRoutes = () => {
           </AdminLayout>
         }
       />
+    {/* Admin Dashboard Routes - Admin Layout */}
+      <Route
+        path="/tenant/dashboard_section"
+        element={
+          <TenantLayout>
+            <TenantDashboard />
+          </TenantLayout>
+        }
+      />
+
     </Routes>
   );
 };
